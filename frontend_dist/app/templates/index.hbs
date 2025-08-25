@@ -1,0 +1,23 @@
+<h1>TaskForge</h1>
+
+<form {{on "submit" this.createTask}} style="margin-bottom: 1rem;">
+  <input placeholder="Title" value={{this.title}} {{on "input" this.updateTitle}} required />
+  <input placeholder="Description" value={{this.description}} {{on "input" this.updateDescription}} />
+  <button type="submit">Add</button>
+</form>
+
+{{#if this.model}}
+  <ul>
+    {{#each this.model as |task|}}
+      <li style="margin: 0.25rem 0;">
+        <strong>{{task.title}}</strong>
+        {{#if task.description}} — {{task.description}}{{/if}}
+        — <em>{{task.status}}</em>
+        <button {{on "click" (fn this.cycleStatus task)}}>Next Status</button>
+        <button {{on "click" (fn this.deleteTask task)}}>Delete</button>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No tasks yet. Add one above.</p>
+{{/if}}
