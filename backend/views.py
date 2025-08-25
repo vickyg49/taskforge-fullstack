@@ -1,5 +1,5 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 
-def index(_request):
+def index(request):
     return render(request, 'index.html')
