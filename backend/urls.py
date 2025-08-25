@@ -10,5 +10,6 @@ router.register(r'tasks', TaskViewSet, basename='task')
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
-    path('api/', include('your_app.urls'))
+    path('api/', include('tasks.urls')),  # <-- use your real app name here
+    path('', index, name='home')
 ]
