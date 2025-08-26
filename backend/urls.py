@@ -10,7 +10,7 @@ router.register(r'tasks', TaskViewSet, basename='task')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('tasks.urls')),
-    path('', index, name='home')
+    path('', FrontendAppView.as_view(), name='home')
 ]
 
 # from django.http import HttpResponse
