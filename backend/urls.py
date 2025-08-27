@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from tasks.views import TaskViewSet
-from .views import index
+from .views import FrontendAppView
+
 
 router = DefaultRouter()
 router.register(r'tasks', TaskViewSet, basename='task')
