@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
 from tasks.views import TaskViewSet
-from .views import frontend_index
+from .views import FrontendAppView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('tasks.urls')),  # API routes
-    path('', frontend_index, name='home'),  # Ember frontend
+    path('', FrontendAppView.as_view(), name='home'),  # Ember frontend
 ]
 
 

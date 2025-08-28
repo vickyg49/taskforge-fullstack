@@ -6,12 +6,15 @@
 # class FrontendAppView(TemplateView):
 #     template_name = "index.html"
 
+from django.views import View
 from django.http import FileResponse
 import os
 from django.conf import settings
 
-def frontend_index(request):
-    # Path to your built index.html
-    file_path = os.path.join(settings.BASE_DIR, "frontend_dist", "app", "index.html")
-    return FileResponse(open(file_path, 'rb'))
+class FrontendAppView(View):
+    def get(self, request):
+        return FileResponse(
+            open(os.path.join(settings.BASE_DIR, "frontend_dist/index.html"), "rb"),
+            content_type="text/html"
+        )
 
