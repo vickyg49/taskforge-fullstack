@@ -1,17 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
 from tasks.views import TaskViewSet
-from .views import frontend_index  # function-based view
-
-router = DefaultRouter()
-router.register(r'tasks', TaskViewSet, basename='task')
+from .views import frontend_index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('tasks.urls')),
-    path('', frontend_index, name='home')  # serve Ember index.html
+    path('api/', include('tasks.urls')),  # API routes
+    path('', frontend_index, name='home'),  # Ember frontend
 ]
+
 
 
 # from django.http import HttpResponse
