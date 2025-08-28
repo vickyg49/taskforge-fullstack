@@ -14,7 +14,7 @@ from django.conf import settings
 class FrontendAppView(View):
     def get(self, request):
         return FileResponse(
-            open(os.path.join(settings.BASE_DIR, "frontend_dist/index.html"), "rb"),
+            open(os.path.join(settings.BASE_DIR, "frontend_dist/app/index.html"), "rb"),
             content_type="text/html"
         )
 
